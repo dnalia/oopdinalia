@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeless Explorer | Explore</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            width: 100%;
+            height: 100%;
+            background-color: #D3C0E6; 
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        header {
+            font-size: 1.5em; 
+            color: #ffffff; 
+            background-color: #A06EBE; 
+            display: flex;
+            justify-content: space-between; 
+            align-items: center; 
+            width: 100%;
+        }
+        .logo {
+            width: 90px;
+            margin-left: 10px; 
+        }
+        .nav-links {
+            margin-right: 20px;
+        }
+        .nav-links a {
+            margin: 0 10px;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500; 
+            font-size: 0.9em;
+        }
+        footer {
+            margin-top: auto;
+            background-color: #A06EBE; 
+            color: #ffffff; 
+            font-size: 0.9em;
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .footer_cols {
+            margin: 5px; 
+        }
+        h2 {
+            margin: 20px 0;
+            color: #A06EBE;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #A06EBE;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        input {
+            margin-top: 5px;
+            padding: 10px;
+            font-size: 16px;
+            width: 220px;
+            max-width: 100%; 
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 15px; 
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #A06EBE;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        button:hover {
+            background-color: #8A5B9D;
+            transform: scale(1.05);
+        }
+        button:active {
+            transform: scale(0.95);
+        }
+        #country_results {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 15px;
+            background-color: #ffffff;
+            width: 100%; 
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+        .country-results {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px; 
+            justify-content: center;
+        }
+        .country-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            width: 220px;
+            text-align: center;
+            background-color: #ffffff;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+        .country-card img {
+            width: 100px;
+            border: 1px solid #ddd;
+            background-color: #f0f0f0;
+        }
+        .explore-btn {
+            margin-top: 10px;
+            padding: 8px 12px;
+            font-size: 14px;
+            color: #ffffff;
+            background-color: #A06EBE;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .explore-btn:hover {
+            background-color: #8A5B9D;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html"><img src="worldexplorelogo.png" alt="Logo" class="logo"></a>
+        <div><strong>🗺️ Timeless Explorer ✈️</strong></div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="explore.html">Explore</a>
+            <a href="itinerary.html">Itinerary</a>
+        </nav>
+    </header>
+    <h2>Country Information Explorer</h2>
+    <label for="current_location">Current Country:</label>
+    <input type="text" id="current_location" placeholder="Enter current country">
+    <button onclick="findBorderingCountries()">Find Nearby Countries</button>
+
+    <div id="country_results" class="country-results"></div>
+    <footer>
+        <div class="footer_cols">
+            <strong>Timeless Explorer </strong><br>
+            <i>"Crafting Lasting Experiences in Every Journey"</i><br>
+            <p style="font-size: 0.8em; margin: 5px 0;">&copy; 2024 Timeless Explorer. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="country.js"></script>
+</body>
+</html>

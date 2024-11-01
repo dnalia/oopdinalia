@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeless Explorer | Itinerary</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+        body {
+            background-color: #D3C0E6; 
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        header {
+            font-size: 1.5em; 
+            color: #ffffff; 
+            background-color: #A06EBE; 
+            display: flex;
+            justify-content: space-between; 
+            align-items: center; 
+            width: 100%;
+            padding: 10px;
+        }
+        .logo {
+            width: 90px; 
+            height: auto;
+            margin-left: 10px; 
+        }
+        .nav-links {
+            display: flex; 
+            gap: 15px; 
+            margin-right: 10px; 
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none; 
+        }
+        .country-container {
+            border: 1px solid #e0e0e0;
+            padding: 20px; 
+            border-radius: 8px;
+            max-width: 900px;
+            margin: 20px auto; 
+            background-color: #ffffff;
+            width: calc(100% - 40px);
+        }
+        .details-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .left-column, .right-column {
+            flex: 1;
+        }
+        .right-column {
+            padding-left: 10px;
+        }
+        .flag-coat-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .flag-coat-container img {
+            width: 150px;
+            height: auto;
+            margin: 0 10px;
+        }
+        .map-container {
+            width: 100%;
+            margin: 10px 0;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 300px;
+            border: 1px solid #ddd;
+            background-color: #f0f0f0;
+        }
+        .info-list li {
+            margin: 8px 0;
+        }
+        .crud-container, .explore-container {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .btn {
+            margin: 5px;
+            padding: 10px 15px;
+            background-color: #A06EBE; 
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .btn:hover {
+            background-color: #905B9C; 
+            transform: scale(1.05);
+        }
+        .btn:active {
+            transform: scale(0.95);
+        }
+        .info-list {
+            list-style: none;
+            padding: 0;
+            font-size: 16px;
+            text-align: left; 
+        }
+        .small-gif {
+            width: 400px;
+            height: auto;
+        }
+        footer {
+            margin-top: auto;
+            background-color: #A06EBE;
+            color: #ffffff; 
+            font-size: 0.9em;
+            width: 100%;
+            text-align: center; 
+        }
+        .footer_cols {
+            margin: 5px;
+        }
+        #readFileContents {
+            display: none; 
+            width: 100%;
+            height: 100px;
+            margin-top: 10px;
+        }
+        #btnUpdate, #btnEdit {
+            background-color: #A06EBE;  
+            color: white; 
+            border: none; 
+            padding: 10px; 
+            cursor: pointer; 
+        }
+        #btnUpdate:hover, #btnEdit:hover {
+            background-color: #905B9C;  
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html"><img src="worldexplorelogo.png" alt="Logo" class="logo"></a>
+        <div><strong>🗺️ Timeless Explorer ✈️</strong></div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="explore.html">Explore</a>
+            <a href="itinerary.html">Itinerary</a>
+        </nav>
+    </header>
+    <div class="country-container">
+        <div class="header"><strong>Country Name: <span id="country-name"></span></strong></div><br>
+
+        <div class="details-container">
+            <div class="left-column">
+                <div class="flag-coat-container">
+                    <div>
+                        <label><strong>Flag:</strong></label><br>
+                        <img id="flag" src="" alt="Flag">
+                    </div>
+                    <div>
+                        <label><strong>Coat of Arms:</strong></label><br>
+                        <img id="coatOfArms" src="" alt="Coat of Arms">
+                    </div>
+                </div>
+                <div class="map-container">
+                    <label><strong>Map:</strong></label>
+                    <iframe id="map" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="right-column">
+                <ul class="info-list">
+                    <li><strong>Area:</strong> <span id="area"></span> km²</li>
+                    <li><strong>Continent:</strong> <span id="continent"></span></li>
+                    <li><strong>Region:</strong> <span id="region"></span></li>
+                    <li><strong>Subregion:</strong> <span id="subregion"></span></li>
+                    <li><strong>Capital City:</strong> <span id="capital"></span></li>
+                    <li><strong>Language(s) Spoken:</strong> <span id="languages"></span></li>
+                    <li><strong>Time Zone:</strong> <span id="timeZone"></span></li>
+                    <li><strong>Location:</strong> Latitude <span id="latitude"></span>, Longitude <span id="longitude"></span></li>
+                    <li><strong>Population:</strong> <span id="population"></span></li>
+                    <li><strong>Currency:</strong> <span id="currencies"></span></li>
+                    <li><img class="small-gif" src="plane.gif" alt="Plane Animation"></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="details-container">
+            <div class="crud-container" id="crud-container">
+                <h2>Create Travel Itinerary 🧳</h2><br>
+                <form>
+                    <div class="form-group">
+                        <label>Itinerary Name:</label>
+                        <input id="fileName" type="text" placeholder="Enter itinerary name" required>
+                        <label for="itineraryDate">Itinerary Date:</label>
+                        <input type="date" id="itineraryDate" name="itineraryDate" />
+                    </div>
+                    <div class="form-group">
+                        <label>Itinerary:</label>
+                        <textarea id="fileContents" rows="5" placeholder="Enter your itinerary" required></textarea><br>
+                    </div>
+                    <button id="btnCreate" class="btn" type="button">Create</button>
+                </form>
+                <ul id="fileList"></ul>
+
+                <h3 id="currentFileName" style="display: none;"></h3> 
+                <textarea id="readFileContents" readonly></textarea>
+                <input type="text" id="readFileName" style="display: none;">
+                <button id="btnUpdate" style="display: none;">Update</button>
+                <button id="btnEdit" style="display: none;">Edit</button>
+            </div>
+            <div class="explore-container">
+                <h2>Explore More 🌏</h2><br>
+                <div class="form-group">
+                    <strong>How to say? </strong>
+                    <label for="languageInput">Enter Language:</label>
+                    <input id="languageInput" type="text" placeholder="Enter a language">
+                    <button class="btn" type="button" onclick="explorePhrases()">Explore Phrases</button>
+                </div>
+                <p>⊹₊┈ㆍ┈ㆍ┈ㆍ✿ㆍ┈ㆍ┈ㆍ┈₊⊹</p>
+
+                <div class="form-group">
+                    <strong>What Should I Eat? </strong>
+                    <label for="countryInput">Enter Country Name:</label>
+                    <input id="countryInput" type="text" placeholder="Enter a country">
+                    <button class="btn" type="button" onclick="exploreFood()">Explore Food</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer_cols">
+            <strong>Timeless Explorer </strong><br>
+            <i>"Crafting Lasting Experiences in Every Journey"</i><br>
+            <p style="font-size: 0.8em; margin: 5px 0;">&copy; 2024 Timeless Explorer, All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script src="country.js"></script>
+</body>
+</html>
